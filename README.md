@@ -1,5 +1,12 @@
+# DeepMind Atari Deep Q Learner
+This repository hosts the [original code](https://sites.google.com/a/deepmind.com/dqn/) published along with [the article](http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html) in Nature and my experiments (if any) with it.
 
------ DQN 3.0 -----
+Tested on Ubuntu 14.04 with nVidia GTX 970:  
+![alt text](https://raw.githubusercontent.com/kuz/DeepMind-Atari-Deep-Q-Learner/master/gifs/breakout.gif "Playing Breakout")  
+More videos on [YouTube Playlist: Deepmind DQN Playing](https://www.youtube.com/playlist?list=PLgOp827qARy0qNyZq5Y6S6vRJO3tb1WcW)
+
+DQN 3.0
+-------
 
 This project contains the source code of DQN 3.0, a Lua-based deep reinforcement
 learning architecture, necessary to reproduce the experiments
@@ -8,17 +15,15 @@ learning", Nature 518, 529–533 (26 February 2015) doi:10.1038/nature14236.
 
 To replicate the experiment results, a number of dependencies need to be
 installed, namely:
-    * LuaJIT and Torch 7.0
-    * nngraph
-    * Xitari (fork of the Arcade Learning Environment (Bellemare et al., 2013))
-    * AleWrap (a lua interface to Xitari)
+* LuaJIT and Torch 7.0
+* nngraph
+* Xitari (fork of the Arcade Learning Environment (Bellemare et al., 2013))
+* AleWrap (a lua interface to Xitari)
 An install script for these dependencies is provided.
 
 Two run scripts are provided: run_cpu and run_gpu. As the names imply,
 the former trains the DQN network using regular CPUs, while the latter uses
 GPUs (CUDA), which typically results in a significant speed-up.
-
-
 
 ----- Installation instructions -----
 
@@ -33,10 +38,10 @@ http://docs.nvidia.com/cuda/cuda-getting-started-guide-for-linux
 
 
 To train DQN on Atari games, the following components must be installed:
-    * LuaJIT and Torch 7.0
-    * nngraph
-    * Xitari
-    * AleWrap
+* LuaJIT and Torch 7.0
+* nngraph
+* Xitari
+* AleWrap
 
 To install all of the above in a subdirectory called 'torch', it should be enough to run
 
@@ -48,8 +53,6 @@ from the base directory of the package.
 Note: The above install script will install the following packages via apt-get:
 build-essential, gcc, g++, cmake, curl, libreadline-dev, git-core, libjpeg-dev,
 libpng-dev, ncurses-dev, imagemagick, unzip
-
-
 
 ----- Training DQN on Atari games -----
 
@@ -70,9 +73,19 @@ specified GPU by setting the environment variable GPU_ID, e.g. by
 
 If GPU_ID is not specified, the first available GPU (ID 0) will be used by default.
 
+Storing a .gif for a trained network
+------------------------------------
 
+Once you have a snapshot of a network you can run
 
------ Options ------
+	./test_gpu <game name> <snapshopt filename>
+
+to make it play one game and store the .gif under `gifs`. For example
+
+	./test_gpu breakout DQN3_0_1_breakout_FULL_Y.t7
+
+Options
+-------
 
 Options to DQN are set within run_cpu (respectively, run_gpu). You may,
 for example, want to change the frequency at which information is output 
